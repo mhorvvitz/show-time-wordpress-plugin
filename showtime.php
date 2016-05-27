@@ -9,7 +9,7 @@
  */
 
  function show_time(){
- 	date_default_timezone_set("America/Saint_Louis");
+ 	date_default_timezone_set("America/Chicago");
  	$time = date("h:i a");
  	$time = "The time is " .$time;
  	echo "<div id=show_time>$time</div>";
