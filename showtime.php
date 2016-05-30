@@ -9,7 +9,7 @@
  */
 
  function show_time(){
- 	$zone = get_option('time_zone');
+ 	$zone = get_option('time_zone','America/Chicago');
  	date_default_timezone_set("$zone");
  	$time = date("h:i a");
  	$time = "The time is " .$time;
@@ -19,7 +19,7 @@
  add_action( 'wp_footer', 'show_time');
 
 function show_time_css() {
-	echo "
+	?>
 	<style type='text/css'>
 	#show_time {
 		with; 200px;
@@ -32,7 +32,7 @@ function show_time_css() {
 		color: blue;
 	}
 	</style>
-	";
+	<?php
 }
 
 add_action( 'wp_head', 'show_time_css' );
@@ -43,11 +43,11 @@ function showtime_settings_menu() {
 
 add_action('admin_menu', 'showtime_settings_menu');
 
-add_action( 'admin_init', 'showtime_settings' );
-
 function showtime_settings() {
 	register_setting( 'showtime_settings', 'time_zone' );
 }
+
+add_action( 'admin_init', 'showtime_settings' );
 
 function showtime_settings_page() {
 ?>
